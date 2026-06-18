@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 15
+names: ['Customzone : summary', 'Customzone_title', 'DropCapitalZone', 'GraphicZone_Description', 'GraphicZone_Illustration', 'GraphicZone_Ornament', 'MainZone', 'MarginTextZone note', 'NoiseZone', 'NumberingZone : chapter', 'NumberingZone_page', 'QuireMarksZone', 'RunningTitleZone', 'TableZone', 'TitlePageZone']
+
+roboflow:
+  workspace: andreas-workspace-4zbv8
+  project: my-first-project-86fcm
+  version: dataset
+  license: Private
+  url: https://app.roboflow.com/andreas-workspace-4zbv8/my-first-project-86fcm/dataset
