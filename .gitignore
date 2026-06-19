@@ -3,3 +3,4 @@
 *.xml
 data_yolo/
 results/
+.idea/
