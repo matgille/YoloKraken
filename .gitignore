@@ -1,3 +1,5 @@
 .venv/
 *.png
 *.xml
+data_yolo/
+results/
