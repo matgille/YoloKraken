@@ -417,11 +417,13 @@ if __name__ == '__main__':
 	retranscribe = True if arguments.retranscribe == "True" else False
 	debug = True if arguments.debug == "True" else False
 	images = glob.glob(f"{images_dir}/*.png")
-	grouped_images = [images[idx:idx + clusters] for idx in range(0, len(images), clusters)]
-	with mp.Pool(processes=int(workers)) as pool:
-		data = [(images, False, device) for images in grouped_images]
-		pool.starmap(main, data)
-	# main(images, False, device="cuda:0")
+	if workers != 1:
+		grouped_images = [images[idx:idx + clusters] for idx in range(0, len(images), clusters)]
+		with mp.Pool(processes=int(workers)) as pool:
+			data = [(images, False, device) for images in grouped_images]
+			pool.starmap(main, data)
+	else:
+		main(images, False, device="cuda:0")
 	# main(images[0:2], debug=False, device="cpu")
 	with zipfile.ZipFile('results/files.zip', 'w') as myzip:
 		all_files = [item.replace('', '') for item in glob.glob(f"results/alto_results/*.xml")]
